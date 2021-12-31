@@ -1,0 +1,15 @@
+#!/bin/bash
+
+action=$1
+shift
+
+[ "$action" = "usage" ] && {
+    echo "  Gimme File:"
+    echo "    gimmef FILENAME [TERM]"
+    echo "      picks a task from FILENAME at random having TERM"
+    exit
+}
+
+TODOTXT_VERBOSE=0
+
+"$TODO_SH" lf "$@" | shuf | head -1
